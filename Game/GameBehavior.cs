@@ -44,6 +44,9 @@ namespace WindBot.Game
 
             _ai = new GameAI(Game, _duel);
             _ai.Executor = DecksManager.Instantiate(_ai, _duel);
+        if(game.DeckPath != null)
+            Deck = Deck.Load(game.DeckPath, true);
+        else
             Deck = Deck.Load(_ai.Executor.Deck);
 
             _select_hint = 0;

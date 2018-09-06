@@ -72,6 +72,7 @@ namespace WindBot
             Info.Host = Config.GetString("Host", Info.Host);
             Info.Port = Config.GetInt("Port", Info.Port);
             Info.HostInfo = Config.GetString("HostInfo", Info.HostInfo);
+            Info.DeckPath = Config.GetString("DeckPath", Info.DeckPath);
             Info.Version = Config.GetInt("Version", Info.Version);
             Info.Hand = Config.GetInt("Hand", Info.Hand);
             Info.Debug = Config.GetBool("Debug", Info.Debug);
@@ -113,6 +114,9 @@ namespace WindBot
                     string password = HttpUtility.ParseQueryString(RawUrl).Get("password");
                     if (password != null)
                         Info.HostInfo = password;
+                    string deckpath = HttpUtility.ParseQueryString(RawUrl).Get("deckpath");
+                    if (deckpath != null)
+                        Info.DeckPath = deckpath;
                     string hand = HttpUtility.ParseQueryString(RawUrl).Get("hand");
                     if (hand != null)
                         Info.Hand = Int32.Parse(hand);

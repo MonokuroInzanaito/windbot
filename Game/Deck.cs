@@ -38,12 +38,15 @@ namespace WindBot.Game
                 Cards.Add(card);
         }
 
-        public static Deck Load(string name)
+        public static Deck Load(string name, bool exact = false)
         {
             StreamReader reader = null;
             try
             {
-                reader = new StreamReader(new FileStream("Decks/" + name + ".ydk", FileMode.Open, FileAccess.Read));
+                string fname = name;
+                if (!exact)
+                    fname = "Decks/" + name + ".ydk";
+                reader = new StreamReader(new FileStream(fname, FileMode.Open, FileAccess.Read));
 
                 Deck deck = new Deck();
                 bool side = false;
